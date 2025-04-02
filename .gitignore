@@ -1,3 +1,2 @@
 /.vscode
-/baseline.exe
-/proof.exe
+*.exe
