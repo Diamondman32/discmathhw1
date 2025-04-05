@@ -4,12 +4,12 @@
 #include <vector>
 #include <thread>
 
-static unsigned long long UPPER_BOUND = 5*1e9;
+static unsigned long long UPPER_BOUND = 5*1e11;
 static int NUM_THREADS = 15;
 
 bool VerifyMagic(unsigned long long currentCount, unsigned long long upperBound)
 {
-    unsigned long long startingCount = currentCount;
+    // unsigned long long startingCount = currentCount;
     for(currentCount; currentCount <= upperBound; ++currentCount)
     {
         if(currentCount == upperBound)
@@ -42,6 +42,7 @@ int main() {
     for(int i = 0; i < NUM_THREADS; ++i)
         threads.emplace_back(VerifyMagic, UPPER_BOUND/NUM_THREADS*i+1, UPPER_BOUND/NUM_THREADS*(i+1));
 
+    // Stop code until threads are done
     for (std::thread& th : threads) {
         th.join();
     }
