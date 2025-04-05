@@ -2,24 +2,24 @@
 #include <iomanip>
 #include <chrono>
 
-static unsigned long long UPPER_BOUND = 5*1e10;
+static unsigned long long UPPER_BOUND = 5*1e9;
 
 int main() {
     std::cout << "Testing numbers from 1 to " << UPPER_BOUND << "\nTesting...\n";
     std::chrono::_V2::system_clock::time_point start = std::chrono::high_resolution_clock::now();
 
     // Test
-    for(unsigned long long currentCount = 1; currentCount <= UPPER_BOUND; currentCount++)
+    for(unsigned long long currentCount = 1; currentCount <= UPPER_BOUND; ++currentCount)
     {
         unsigned long long manipulatedCount = currentCount;
         while(manipulatedCount != 1)
         {
             if(manipulatedCount % 2 == 0)
-                manipulatedCount /= 2;
+                manipulatedCount >>= 1;
             else
             {
                 manipulatedCount = manipulatedCount * 3 + 1;
-                manipulatedCount /= 2;
+                manipulatedCount >>= 1;
             }
 
             // Numbers below currentCount have already been proved to be magic
